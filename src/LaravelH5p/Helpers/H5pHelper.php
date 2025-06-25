@@ -37,6 +37,6 @@ class H5pHelper
     public static function libraryToString($library) {
         $name = $library['machineName'] ?? $library['name'];
 
-        return "{$name} {$library['majorVersion']}.{$library['minorVersion']}";
+        return "{$name}-{$library['majorVersion']}.{$library['minorVersion']}";
     }
 }
