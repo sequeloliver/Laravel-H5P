@@ -5,6 +5,7 @@ namespace Djoudi\LaravelH5p\Http\Controllers;
 use DB;
 use App\Http\Controllers\Controller;
 use Djoudi\LaravelH5p\Events\H5pEvent;
+use Djoudi\LaravelH5p\Helpers\H5pHelper;
 use Djoudi\LaravelH5p\LaravelH5p;
 use H5PEditorEndpoints;
 use Illuminate\Http\Request;
@@ -447,7 +448,7 @@ class AjaxController extends Controller
         }
         
         // Prepare form
-        $library = isset($content['library']) ? \H5PCore::libraryToString($content['library']) : 0;
+        $library = isset($content['library']) ? H5pHelper::libraryToString($content['library']) : 0;
         $display_options = $core->getDisplayOptionsForEdit(isset($content['disable']) ? $content['disable'] : null);
         $title = isset($content['title']) ? $content['title'] : '';
 

@@ -12,6 +12,7 @@
 
 namespace Djoudi\LaravelH5p;
 
+use Djoudi\LaravelH5p\Helpers\H5pHelper;
 use Djoudi\LaravelH5p\Repositories\EditorAjaxRepository;
 use Djoudi\LaravelH5p\Repositories\LaravelH5pRepository;
 use Djoudi\LaravelH5p\Storages\EditorStorage;
@@ -364,7 +365,7 @@ class LaravelH5p
         $author_id = (int) (is_array($content) ? $content['user_id'] : $content->user_id);
         // Add JavaScript settings for this content
         $settings = [
-            'library'         => H5PCore::libraryToString($content['library']),
+            'library'         => H5pHelper::libraryToString($content['library']),
             'jsonContent'     => $safe_parameters,
             'fullScreen'      => $content['library']['fullscreen'],
             'exportUrl'       => config('laravel-h5p.h5p_export') ? route('h5p.export', [$content['id']]) : '',

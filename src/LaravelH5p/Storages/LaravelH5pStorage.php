@@ -12,6 +12,7 @@
 
 namespace Djoudi\LaravelH5p\Storages;
 
+use Djoudi\LaravelH5p\Helpers\H5pHelper;
 use H5PFileStorage;
 
 //use Illuminate\Filesystem\Filesystem;
@@ -52,7 +53,7 @@ class LaravelH5pStorage implements H5PFileStorage
      */
     public function saveLibrary($library)
     {
-        $dest = $this->path.'/libraries/'.\H5PCore::libraryToString($library, true);
+        $dest = $this->path.'/libraries/'.H5pHelper::libraryToString($library, true);
 
         // Make sure destination dir doesn't exist
         \H5PCore::deleteFileTree($dest);
@@ -152,7 +153,7 @@ class LaravelH5pStorage implements H5PFileStorage
      */
     public function exportLibrary($library, $target, $developmentPath = null)
     {
-        $folder = \H5PCore::libraryToString($library, true);
+        $folder = H5pHelper::libraryToString($library, true);
         $srcPath = ($developmentPath === null ? "/libraries/{$folder}" : $developmentPath);
         self::copyFileTree("{$this->path}{$srcPath}", "{$target}/{$folder}");
     }

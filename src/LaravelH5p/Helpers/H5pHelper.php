@@ -25,4 +25,18 @@ class H5pHelper
     {
         return bin2hex($token);
     }
+
+    /**
+     * Writes library data as string on the form {machineName} {majorVersion}.{minorVersion}
+     *
+     * @param array $library
+     *  With keys (machineName and/or name), majorVersion and minorVersion
+     * @return string
+     *  On the form {machineName} {majorVersion}.{minorVersion}
+     */
+    public static function libraryToString($library) {
+        $name = $library['machineName'] ?? $library['name'];
+
+        return "{$name} {$library['majorVersion']}.{$library['minorVersion']}";
+    }
 }

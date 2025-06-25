@@ -5,6 +5,7 @@ namespace Djoudi\LaravelH5p\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Djoudi\LaravelH5p\Eloquents\H5pContent;
 use Djoudi\LaravelH5p\Events\H5pEvent;
+use Djoudi\LaravelH5p\Helpers\H5pHelper;
 use Djoudi\LaravelH5p\LaravelH5p;
 use Djoudi\LaravelH5p\Exceptions\H5PException;
 use H5pCore;
@@ -173,7 +174,7 @@ class H5pController extends Controller
         $settings = $embed['settings'];
 
         // Prepare form
-        $library = $content['library'] ? H5PCore::libraryToString($content['library']) : 0;
+        $library = $content['library'] ? H5pHelper::libraryToString($content['library']) : 0;
         //$parameters = $content['params'] ? $content['params'] : '{}';
             $parameters['params'] = json_decode($content['params']);
             $parameters['metadata'] = $content['metadata'];

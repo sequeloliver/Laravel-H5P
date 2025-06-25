@@ -507,6 +507,10 @@ class LaravelH5pRepository implements H5PFrameworkInterface
             ->where('minor_version', $minorVersion)
             ->first();
 
+        if (! $library) {
+            return false;
+        }
+
         $return = json_decode(json_encode($library), true);
 
         $dependencies = DB::select('SELECT hl.name as machineName, hl.major_version as majorVersion, hl.minor_version as minorVersion, hll.dependency_type as dependencyType
