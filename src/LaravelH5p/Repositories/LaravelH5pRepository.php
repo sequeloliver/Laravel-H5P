@@ -1093,4 +1093,9 @@ class LaravelH5pRepository implements H5PFrameworkInterface
     public function setContentHubMetadataChecked($time, $lang = 'en') {
         return true;
     }
+
+    public function resetHubOrganizationData()
+    {
+        DB::table('h5p_libraries_hub_cache')->truncate();
+    }
 }
